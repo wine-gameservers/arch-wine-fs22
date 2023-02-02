@@ -204,9 +204,9 @@ Using VNC Viewer you can connect to the VNC Server by connecting to ip:5900, thi
 
 # Server Installation
 
-Open up the terminal, and run the below command.
-
 ## Running the installation
+
+Open up the terminal, and run the below command.
 
 `$./setup_giants.sh`
 
