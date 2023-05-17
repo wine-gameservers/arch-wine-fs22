@@ -59,7 +59,7 @@ For the full game + all dlc you will need:
 
 Needless to say it's up to you what dlc/packages you buy.
 
-**A fair warning running your own server is not cheap... **
+**A fair warning running your own server is not cheap, Giants Software rather likes you to buy a package from there hosting partners. **
 
 ### VNC Client
 
