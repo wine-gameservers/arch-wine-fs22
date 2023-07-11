@@ -54,12 +54,9 @@ GIANTS Software ships the game with a dedicated server tool this means you can o
 
 For the full game + all dlc you will need:
 
-- [Farming Simulator 22 - Year 1 Bundle](https://www.farming-simulator.com/about.php?lang=en&country=us&platform=pc)
-- [Farming Simulator 22 - Year 2 Season Pass](https://www.farming-simulator.com/dlc-detail.php?lang=en&country=es&dlc_id=fs22seasonpass2)
+- [Farming Simulator 22 Premium Edition(https://www.farming-simulator.com/buy-now.php?lang=en&country=nl&platform=pcdigital)
 
-Needless to say it's up to you what dlc/packages you buy.
-
-**A fair warning running your own server is not cheap, Giants Software rather likes you to buy a package from there hosting partners. **
+** Don't get confused about other versions, even if you own the base game this is the cheapest option to unlock all content**
 
 ### VNC Client
 
