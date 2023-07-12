@@ -5,6 +5,7 @@ This project is hosted at https://github.com/wine-gameservers/arch-wine-fs22/
 
 ## Table of contents
 <!-- vim-markdown-toc GFM -->
+* [Motivation](#motivation)
 * [Getting Started](#getting-started)
 	* [Hardware Requirements](#hardware-requirements)
 	* [Software Requirements](#software-requirements)
@@ -26,6 +27,14 @@ This project is hosted at https://github.com/wine-gameservers/arch-wine-fs22/
 		* [Starting the admin portal](#starting-the-admin-portal)
 * [Environment variables](#environment-variables)
 <!-- vim-markdown-toc -->
+
+# Motivation
+
+GIANTS Software encourages its customers to consider renting a server from one of their verified partners, as it helps protect their business and maintain close relationships with these partners. Unfortunately, they do not allow third parties to host servers in order to support their partner network effectively.
+
+For customers who prefer running personal servers, there is a requirement to purchase all the game content (game, DLC, packs) twice. This means obtaining one license for the player and another license specifically for the server.
+
+While renting a server remains a viable option for certain players, it has become increasingly common for game developers to provide free-to-use server tools. Regrettably, the server tools provided by GIANTS Software are considered outdated and inefficient. As a result, users are compelled to set up an entire Windows environment. However, with our project, we have overcome this limitation by enabling users to deploy servers within a lightweight Docker environment, eliminating the need for a Windows setup.
 
 # Getting Started
 
