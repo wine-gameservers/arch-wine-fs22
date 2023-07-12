@@ -225,7 +225,15 @@ Now that we have configured the host directories and our compose file we should 
 
 ## Connecting to the VNC Server
 
-Using VNC Viewer you can connect to the VNC Server by connecting to ip:5900, this should open up a full desktop environment here we can run the installation of the dedicated server.
+To connect to the VNC Server using VNC Viewer, you can establish a connection by specifying the IP address followed by the choosen vnc port number default `5900`. This connection will open up a full desktop environment, allowing you to proceed with the installation of the dedicated server.
+
+Please launch VNC Viewer and enter the following in the connection field:
+
+```
+ip:5900
+```
+
+Replace `ip` with the actual IP address of the server.
 
 # Server Installation
 
