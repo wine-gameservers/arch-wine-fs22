@@ -218,7 +218,7 @@ You should now unpack the installer and place the unzipped files inside the */yo
 ## Starting the container
 
 With the host directories configured and the compose file set up accordingly, you are now ready to start the container.
-inside the same direcoty where the docker-compose.yml is located run the following command.
+inside the same direcoty where the modified docker-compose.yml is located run the following command.
 
 ```bash
 docker-compose up -d
