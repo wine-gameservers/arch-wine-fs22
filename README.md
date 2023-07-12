@@ -38,7 +38,7 @@ While renting a server remains a viable option for certain players, it has becom
 
 # Getting Started
 
-Please keep in mind this guide does not include all possible scenarios, specially for NAS users you might need to use the included admin console to setup the required directories/user permissions. If you are having difficulties getting it to run please do not private message me but rather try to get help in our [Discord server](https://discord.gg/Ejz2MaXSNb). 
+Please note that this guide may not cover every possible scenario, particularly for NAS (synology) users. In such cases, you may need to utilize the provided admin console to configure the necessary directories and user permissions. If you encounter any issues while attempting to run the program, kindly refrain from sending me private messages. Instead, we recommend seeking assistance on our Discord server, where you can find additional support and guidance. [Discord server](https://discord.gg/Ejz2MaXSNb). 
 
 ## Hardware Requirements
 
