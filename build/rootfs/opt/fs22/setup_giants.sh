@@ -2,6 +2,7 @@
 
 export WINEDEBUG=-all,fixme-all
 export WINEPREFIX=~/.fs22server
+export WINEARCH=win64
 export USER=nobody
 
 # Check if the config directory is already written
@@ -34,7 +35,7 @@ fi
 
 if [ -d /opt/fs22/game/Farming\ Simulator\ 2022 ]
 then
-    ln -s /opt/fs22/game ~/.fs22server/drive_c/Program\ Files\ \(x86\)
+    ln -s /opt/fs22/game/Farming\ Simulator\ 2022 ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022
 else
 echo "The host game directorie are not in place can't create symlink!"
 
