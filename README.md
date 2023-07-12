@@ -65,7 +65,7 @@ Please note that the Steam version of the game is not supported for running as a
 
 To obtain the full game and all DLCs, we recommend purchasing the Farming Simulator 22 Premium Edition. This edition provides access to all the content, and it is the most cost-effective option to unlock all the game's features. Please be cautious about other versions available, as this edition ensures the inclusion of all the content you need.
 
-- [Farming Simulator 22 Premium Edition(https://www.farming-simulator.com/buy-now.php?lang=en&country=nl&platform=pcdigital)
+- [Farming Simulator 22 Premium Edition](https://www.farming-simulator.com/buy-now.php?lang=en&country=nl&platform=pcdigital)
 
 ### VNC Client
 
