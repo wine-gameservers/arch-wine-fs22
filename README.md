@@ -152,9 +152,9 @@ $ docker run -d \
 
 ## Initial installation
 
-Before we attempt to start the docker container we need to go trough the initial configuration, most games offer standalone server binaries however for the Farming Simulator this is not the case. The files needed are inside the digital download, so in order to get them we need to dowload the full game and all DLC from the [Download Portal](https://eshop.giants-software.com/downloads.php).
+Before starting the Docker container, it is necessary to go through the initial configuration process. Unlike many other games that provide standalone server binaries, Farming Simulator does not offer this option. Instead, the required files are included in the digital download package. To obtain these files, you will need to download the full game (ZIP Version) and all DLC from the [Download Portal](https://eshop.giants-software.com/downloads.php).
 
-We go into more detail below, but be reassured the installation is only once. If the compose file is configured correctly you won't lose the installation or configuration files even if you remove or purge the docker image/container. 
+We will provide more detailed instructions below, but rest assured that the installation process is a one-time requirement. If the compose file is correctly configured with the correct mount paths, you will not lose the installation or configuration files even if you remove or purge the Docker image/container.
 
 ## Downloading the dedicated server
 
@@ -166,33 +166,53 @@ The DLC files are often just an .exe executable you can download them, we move t
 
 ## Preparing the needed directories on the host machine
 
-Because we would not like to lose the installation if we remove/update the docker container we need to configure some directories on the host side. I usually like to place them in /opt, ofcourse you can use any other mount point to your liking.
+To ensure that the installation remains intact even if you remove or update the Docker container, it is important to configure specific directories on the host side. A common practice is to place these directories in `/opt`, although you can choose any other preferred mount point according to your needs and preferences.
 
-`$sudo mkdir -p /opt/fs22/{config,game,installer/dlc}`
+`$sudo mkdir -p /opt/fs22/{config,game,installer,dlc}`
 
-We still need to make sure our docker container is able to write/read to this directory, we do so by running the below command to make sure the user account configured in the compose file PUID/PGID has the appropriate permission to acces them.
+To enable read and write access for the user account configured in the compose file (PUID/PGID), we need to ensure that the Docker container can interact with the designated directory. This can be achieved by executing the following command, which grants the necessary permissions:
 
-`$sudo chown -R myuser:mygroup /opt/fs22`
+```bash
+sudo chown -R myuser:mygroup /opt/fs22
+```
 
-If you still need to add the required PUID/PGID to the docker-compose/run file you can find out the appropriate vallues using the linux [id](https://man7.org/linux/man-pages/man1/id.1.html) command.
+Replace `<myuser>` with the appropriate user and `<mygroup>` with the users primary group (often the same as `<myuser>` if unsure use the id command below).
 
-`$id username`
+To incorporate the necessary PUID (User ID) and PGID (Group ID) values into the docker-compose/run file, you can utilize the Linux `id` command to retrieve the appropriate values. Run the following command:
+
+```bash
+id username
+```
+
+Replace `username` with the desired username.
+
+Once you have obtained the User ID (UID) and Group ID (PGID) from the output of the `id` command, add them to the docker-compose/run file using the following YAML syntax:
 
 ```yaml
-          - PUID=<UID from user>
-          - PGID=<PGID from user>
+- PUID=<UID from user>
+- PGID=<PGID from user>
+```
+
+Make sure to append `<UID=>` with the actual User ID value and `<PGID=>` with the corresponding Group ID value.
+
+Example:
+
+```yaml
+- PUID=1000
+- PGID=1000
 ```
 
 ## Unpack and move the installer
 
-You should now unpack the installer and place the unzipped files inside the */your/path/installer* directory, all dlc should be placed in the */your/path/installer/dlc* directory. If we start the docker container those directories will be mapped inside the container hence making them available for installation.
+You should now unpack the installer and place the unzipped files inside the */your/path/fs22/installer* directory, all dlc should be placed in the */your/path/fs22/dlc* directory. If we start the docker container those directories will be mapped inside the container hence making them available for installation.
 
-*Note: Please remember the above location depends on the docker-compose mount location.*
+*Note: left mounth paths are on the host machine, the right mount path is inside the docker image and should be left untouched*
 
 ```
-- /your/path/installer:/opt/fs22/installer
-- /your/path/config:/opt/fs22/config
-- /your/path/game:/opt/fs22/game
+- /your/path/fs22/installer:/opt/fs22/installer
+- /your/path/fs22/config:/opt/fs22/config
+- /your/path/fs22/game:/opt/fs22/game
+- /your/path/fs22/dlc:/opt/fs22/dlc
 ```
 
 ## Starting the container
