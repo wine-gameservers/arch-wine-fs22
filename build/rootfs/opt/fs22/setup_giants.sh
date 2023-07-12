@@ -5,6 +5,16 @@ export WINEPREFIX=~/.fs22server
 export WINEARCH=win64
 export USER=nobody
 
+# Create a clean 64bit Wineprefix
+
+if [ -d ~/.fs22server ]
+then
+    rm -r ~/.fs22server && wine wineboot
+else
+wine wineboot
+
+fi
+
 # Check if the config directory is already written
 
 if [ -d /opt/fs22/config/FarmingSimulator2022 ]
