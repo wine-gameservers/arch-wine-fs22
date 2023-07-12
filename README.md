@@ -55,31 +55,30 @@ AMD: Zen1 or newer
 
 ### Linux Distribution
 
-Please refer to your linux distribution on how to install docker and docker-compose, the image only runs on docker suppported operating systems using the x86_64 / amd64 architecture, arm/apple is not supported.
+To install Docker and Docker Compose, please consult the documentation specific to your Linux distribution. It's important to note that the provided image is intended for operating systems that support Docker and utilize the x86_64 / amd64 architecture. Unfortunately, arm/apple architectures are not supported.
 
 ### Server License
 
-GIANTS Software ships the game with a dedicated server tool this means you can only run a server if you purchase an additional license from the Giants. You cannot host and play on a server with the same license, this means you need to buy everything twice in order to run the server and play on it. The steam version of the game is not supported to run as server inside docker, but you can use it to play on the server.
+GIANTS Software provides a dedicated server tool with the game, which means that in order to run a server, you will need to purchase an additional license from GIANTS. It is not possible to host and play on the same server using a single license. Therefore, you will need to buy everything twice in order to both run the server and play on it.
 
-For the full game + all dlc you will need:
+Please note that the Steam version of the game is not supported for running as a server inside a Docker environment. However, you can use the Steam version to play on the server.
+
+To obtain the full game and all DLCs, we recommend purchasing the Farming Simulator 22 Premium Edition. This edition provides access to all the content, and it is the most cost-effective option to unlock all the game's features. Please be cautious about other versions available, as this edition ensures the inclusion of all the content you need.
 
 - [Farming Simulator 22 Premium Edition(https://www.farming-simulator.com/buy-now.php?lang=en&country=nl&platform=pcdigital)
 
-** Don't get confused about other versions, even if you own the base game this is the cheapest option to unlock all content**
-
 ### VNC Client
 
-The first time after the docker container is started you need to go trough initial installation of the game + dlc using a VNC Client, an example is VNC® Viewer.
+After starting the Docker container for the first time, you will need to go through the initial installation of the game and DLC using a VNC client. One example of a VNC client is VNC® Viewer. This will allow you to set up the game and install the necessary content within the Docker environment.
 
 - [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)
 
 ## Deployment
 
-The key difference between docker run versus docker-compose is that docker run is entirely command line based, while docker-compose reads configuration data from a YAML file, if you are not sure what to use I would suggest to go for docker-compose.
+The primary distinction between `docker run` and `docker-compose` is that `docker run` relies solely on command-line instructions, whereas `docker-compose` reads configuration data from a YAML file. If you are unsure about which option to choose, I recommend opting for `docker-compose`. It provides a more organized and manageable approach to container deployment by utilizing a YAML file to define and configure multiple containers and their dependencies.
 
 ### Docker compose
 ```
-version: "3.9"
 services:
   arch-wine-fs22:
     image: toetje585/arch-wine-fs22:latest
