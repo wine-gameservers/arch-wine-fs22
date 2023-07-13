@@ -1,9 +1,17 @@
 #!/bin/bash
 
+export WINEDLLOVERRIDES=mscoree=d
 export WINEDEBUG=-all,fixme-all
 export WINEPREFIX=~/.fs22server
 export WINEARCH=win64
 export USER=nobody
+
+# Debug info/warning/error color
+
+NOCOLOR='\033[0;0m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
 
 # Create a clean 64bit Wineprefix
 
@@ -15,53 +23,50 @@ wine wineboot
 
 fi
 
-# Check if the config directory is already written
+# it's important to check if the config directory exists on the host mount path. If it doesn't exist, create it.
 
 if [ -d /opt/fs22/config/FarmingSimulator2022 ]
 then
-    echo "The host config directories are already in place!"
+    echo -e "${GREEN}INFO: The host config directory exist, no need to create it!${NOCOLOR}"
 else
 mkdir -p /opt/fs22/config/FarmingSimulator2022
 
 fi
 
-if [ -d ~/.fs22server/drive_c/users/$USER/Documents/My\ Games\FarmingSimulator2022 ]
-then
-    echo "The docker config directories are already in place!"
-else
-mkdir -p ~/.fs22server/drive_c/users/$USER/Documents/My\ Games
-
-fi
-
+# it's important to check if the game directory exists on the host mount path. If it doesn't exist, create it.
 
 if [ -d /opt/fs22/game/Farming\ Simulator\ 2022 ]
 then
-    echo "The host game directorie are already in place!"
+    echo -e "${GREEN}INFO: The host game directory exist, no need to create it!${NOCOLOR}"
 else
 mkdir -p /opt/fs22/game/Farming\ Simulator\ 2022
 
 fi
+
+# Symlink the host game path inside the wine prefix to preserve the installation on image deletion or update.
 
 
 if [ -d /opt/fs22/game/Farming\ Simulator\ 2022 ]
 then
     ln -s /opt/fs22/game/Farming\ Simulator\ 2022 ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022
 else
-echo "The host game directorie are not in place can't create symlink!"
+echo -e "${RED}Error: There is a problem... the host game directory does not exist can't create symlink installation will fail!${NOCOLOR}"
 
 fi
 
-if [ -d ~/.fs22server/drive_c/users/$USER/Documents/My\ Games ]
+# Symlink the host config path inside the wine prefix to preserver the config files on image deletion or update.
+
+if [ -d ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022 ]
 then
-    ln -s /opt/fs22/config/FarmingSimulator2022 ~/.fs22server/drive_c/users/$USER/Documents/My\ Games
+    echo -e "${GREEN}INFO: The symlink is already in place, no need to create one!${NOCOLOR}"
 else
-echo "The docker config directorie are not in place can't create symlink!"
+mkdir -p ~/.fs22server/drive_c/users/$USER/Documents/My\ Games && ln -s /opt/fs22/config/FarmingSimulator2022 ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022
 
 fi
 
 if [ -d ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/dedicated_server/logs ]
 then
-    echo "The log directories are in place!"
+    echo -e "${GREEN}INFO: The log directories are in place!${NOCOLOR}"
 else
     mkdir -p ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/dedicated_server/logs
 
@@ -69,9 +74,18 @@ fi
 
 if [ -f ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/FarmingSimulator2022.exe ]
 then
-    echo "Already installed we can skip this"
+    echo -e "${GREEN}INFO: Game already installed we can skip the installer!${NOCOLOR}"
 else
     wine "/opt/fs22/installer/FarmingSimulator2022.exe"
+fi
+
+# Cleanup Desktop
+
+if [ -f ~/Desktop/ ]
+then
+    rm -r "~/Desktop/Farming\ Simulator\ 22\ .*"
+else
+    echo -e "${GREEN}INFO: Nothing to cleanup!${NOCOLOR}"
 fi
 
 # Do we have a license file installed?
@@ -79,7 +93,7 @@ fi
 count=`ls -1 ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/*.dat 2>/dev/null | wc -l`
 if [ $count != 0 ]
 then
-    echo "License files detected"
+    echo -e "${GREEN}INFO: Generate the game license files if needed!${NOCOLOR}"
 else
     wine ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/FarmingSimulator2022.exe
 fi
@@ -87,9 +101,9 @@ fi
 count=`ls -1 ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/*.dat 2>/dev/null | wc -l`
 if [ $count != 0 ]
 then
-    echo "We have a license now!"
+    echo -e "${GREEN}INFO: The license files are in place!${NOCOLOR}"
 else
-    echo "We cannot start without license files" && exit
+    echo -e "${RED}ERROR: No license files detected, they are generated after you enter the cd-key during setup... most likely the setup is failing to start!${NOCOLOR}" && exit
 fi
 
 # Copy webserver config..
@@ -98,7 +112,7 @@ if [ -d ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/ 
 then
     cp "/opt/fs22/xml/default_dedicatedServer.xml" ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/dedicatedServer.xml
 else
-    echo "Game not installed?" && exit
+    echo -e "${RED}ERROR: Game not installed?${NOCOLOR}" && exit
 fi
 
 # Copy server config
@@ -107,16 +121,192 @@ if [ -d ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator20
 then
     cp "/opt/fs22/xml/default_dedicatedServerConfig.xml" ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/dedicated_server/dedicatedServerConfig.xml
 else
-    echo "Game diden't start for first time no directories?" && exit
+    echo -e "${RED}ERROR: Game diden't start for first time no directories?${NOCOLOR}" && exit
 fi
+
+
+# Check DLC
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_v1.1.1.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Antonio Carraro SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Antonio Carraro Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_v1.1.0.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: CLAAS XERION SADDLE TRAC Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_eroPack_v1.0.0.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Ero Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Ero Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_v1.0.0.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Volvo LM845 SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Volvo LM845 Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_forestryPack_v1.3.0.0.exe ]; then
+    echo -e "${GREEN}INFO: Forestry Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: ForestryPack Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_goeweilPack_v1.0.0.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Goeweil Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Goeweil Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_v1.0.0.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Hay And Forage Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Hay And Forage Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_kubotaPack_v1.1.0.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Kubotae Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Kubota Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_vermeerPack_v1.0.1.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Vermeer Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Vermeer Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_v1.1.0.0_ESD.exe ]; then
+    echo -e "${GREEN}INFO: Pumps And Hoses Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Pumps And Hoses Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/antonioCarraroPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Antonio Carraro Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_v1.1.1.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_v1.1.1.0_ESD.exe"
+		echo -e "${GREEN}INFO: Antonio Carraro Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/claasSaddleTracPack.dlc ]
+then
+    echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_v1.1.0.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_v1.1.0.0_ESD.exe"
+		echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRACo Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/eroPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Ero Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_eroPack_v1.0.0.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_eroPack_v1.0.0.0_ESD.exe"
+		echo -e "${GREEN}INFO: Ero Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/extraContentVolvoLM845.dlc ]
+then
+    echo -e "${GREEN}INFO: Volvo LM845 Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_v1.0.0.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_v1.0.0.0_ESD.exe"
+		echo -e "${GREEN}INFO: Volvo LM845 Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/forestryPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Forestry Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_forestryPack_v1.3.0.0.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_forestryPack_v1.3.0.0.exe"
+		echo -e "${GREEN}INFO: Forestry Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/goeweilPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Goeweil Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_goeweilPack_v1.0.0.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_goeweilPack_v1.0.0.0_ESD.exe"
+		echo -e "${GREEN}INFO: Goeweil Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/hayAndForagePack.dlc ]
+then
+    echo -e "${GREEN}INFO: Hay And Forage Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_v1.0.0.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_v1.0.0.0_ESD.exe"
+		echo -e "${GREEN}INFO: Hay And Forage Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/kubotaPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Kubota Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_kubotaPack_v1.1.0.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_kubotaPack_v1.1.0.0_ESD.exe"
+		echo -e "${GREEN}INFO: Kubota Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/vermeerPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Vermeer Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_vermeerPack_v1.0.1.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_vermeerPack_v1.0.1.0_ESD.exe"
+		echo -e "${GREEN}INFO: Vermeer Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/pumpsAndHosesPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Pumps And Hoses Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_v1.1.0.0_ESD.exe ]; then
+        wine "/opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_v1.1.0.0_ESD.exe"
+		echo -e "${GREEN}INFO: Pumps And Hoses Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+echo -e "${YELLOW}INFO: Checking for updates if you get warning about gpu drivers make sure to click no!${NOCOLOR}"
+wine ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/FarmingSimulator2022.exe
 
 # Check config if not exist exit
 
 if [ -f ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/dedicated_server/dedicatedServerConfig.xml ]
 then
-    echo "We can run the server"
+    echo -e "${GREEN}INFO: We can run the server now by clicking on 'Start Server' on the desktop!${NOCOLOR}"
 else
-    echo "We are missing files?" && exit
+    echo -e "${RED}ERROR: We are missing files?${NOCOLOR}" && exit
 fi
 
 # Lets purge the logs so we won't have errors/warnings at server start...
@@ -142,4 +332,10 @@ else
     touch ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/log.txt
 fi
 
-exit 0
+
+echo -e "${YELLOW}INFO: Checking for updates if you get warning about gpu drivers make sure to click no!${NOCOLOR}"
+wine ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/FarmingSimulator2022.exe
+
+echo -e "${YELLOW}INFO: All done closing this window in 20 seconds...${NOCOLOR}"
+
+exec sleep 20
