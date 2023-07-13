@@ -105,6 +105,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /opt/fs22/config:/opt/fs22/config
       - /opt/fs22/game:/opt/fs22/game
+      - /opt/fs22/dlc:/opt/fs22/dlc
       - /opt/fs22/installer:/opt/fs22/installer
     ports:
       - 5900:5900/tcp
@@ -129,6 +130,7 @@ $ docker run -d \
     -v /opt/fs22/installer:/opt/fs22/installer \
     -v /opt/fs22/config:/opt/fs22/config \
     -v /opt/fs22/game:/opt/fs22/game \
+    -v /opt/fs22/dlc:/opt/fs22/dlc \
     -e VNC_PASSWORD="<your vnc password>" \
     -e WEB_USERNAME="<dedicated server portal username>" \
     -e WEB_PASSWORD="<dedicated server portal password>" \
