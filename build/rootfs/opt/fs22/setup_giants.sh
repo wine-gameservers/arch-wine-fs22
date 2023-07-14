@@ -23,6 +23,76 @@ wine wineboot
 
 fi
 
+if [ -f /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Antonio Carraro SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Antonio Carraro Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_*.exe ]; then
+    echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: CLAAS XERION SADDLE TRAC Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_eroPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Ero Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Ero Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_*.exe ]; then
+    echo -e "${GREEN}INFO: Volvo LM845 SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Volvo LM845 Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_forestryPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Forestry Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: ForestryPack Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_goeweilPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Goeweil Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Goeweil Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_*.exe ]; then
+    echo -e "${GREEN}INFO: Hay And Forage Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Hay And Forage Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_kubotaPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Kubotae Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Kubota Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_vermeerPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Vermeer Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Vermeer Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
+if [ -f /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Pumps And Hoses Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Pumps And Hoses Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
 # it's important to check if the config directory exists on the host mount path. If it doesn't exist, create it.
 
 if [ -d /opt/fs22/config/FarmingSimulator2022 ]
@@ -125,85 +195,16 @@ else
 fi
 
 
-# Check DLC
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Antonio Carraro SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Antonio Carraro Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_*.exe ]; then
-    echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: CLAAS XERION SADDLE TRAC Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_eroPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Ero Pack SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Ero Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_*.exe ]; then
-    echo -e "${GREEN}INFO: Volvo LM845 SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Volvo LM845 Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_forestryPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Forestry Pack SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: ForestryPack Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_goeweilPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Goeweil Pack SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Goeweil Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_*.exe ]; then
-    echo -e "${GREEN}INFO: Hay And Forage Pack SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Hay And Forage Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_kubotaPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Kubotae Pack SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Kubota Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_vermeerPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Vermeer Pack SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Vermeer Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
-
-if [ -f /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Pumps And Hoses Pack SETUP FOUND!${NOCOLOR}"
-else
-	echo -e "${YELLOW}WARNING: Pumps And Hoses Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
-	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
-fi
+# Install DLC
 
 if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/antonioCarraroPack.dlc ]
 then
     echo -e "${GREEN}INFO: Antonio Carraro Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_*.exe"
-		echo -e "${GREEN}INFO: Antonio Carraro Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Antonio Carraro Pack!${NOCOLOR}"
+        for i in /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack*.exe; do wine "$i"; done
+        echo -e "${GREEN}INFO: Antonio Carraro Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -212,8 +213,9 @@ then
     echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_*.exe"
-		echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRACo Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Claas Saddle TRAC Pack!${NOCOLOR}"
+        for i in /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRACo Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -222,8 +224,9 @@ then
     echo -e "${GREEN}INFO: Ero Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_eroPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_eroPack_*.exe"
-		echo -e "${GREEN}INFO: Ero Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Ero Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_eroPack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Ero Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -232,8 +235,9 @@ then
     echo -e "${GREEN}INFO: Volvo LM845 Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_*.exe"
-		echo -e "${GREEN}INFO: Volvo LM845 Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Volvo LM845 Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM84*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Volvo LM845 Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -242,8 +246,9 @@ then
     echo -e "${GREEN}INFO: Forestry Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_forestryPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_forestryPack_*.exe"
-		echo -e "${GREEN}INFO: Forestry Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Forestry Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_forestryPack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Forestry Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -252,8 +257,9 @@ then
     echo -e "${GREEN}INFO: Goeweil Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_goeweilPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_goeweilPack_*.exe"
-		echo -e "${GREEN}INFO: Goeweil Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Goeweil Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_goeweilPack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Goeweil Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -262,8 +268,9 @@ then
     echo -e "${GREEN}INFO: Hay And Forage Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_*.exe"
-		echo -e "${GREEN}INFO: Hay And Forage Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Hay And Forage Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Hay And Forage Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -272,8 +279,9 @@ then
     echo -e "${GREEN}INFO: Kubota Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_kubotaPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_kubotaPack_*.exe"
-		echo -e "${GREEN}INFO: Kubota Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Kubota Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_kubotaPack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Kubota Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -282,8 +290,9 @@ then
     echo -e "${GREEN}INFO: Vermeer Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_vermeerPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_vermeerPack_*.exe"
-		echo -e "${GREEN}INFO: Vermeer Pack is now installed!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing Vermeer Pack!${NOCOLOR}"
+    	for i in /opt/fs22/dlc/FarmingSimulator22_vermeerPack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Vermeer Pack is now installed!${NOCOLOR}"
     fi
 fi
 
@@ -292,8 +301,9 @@ then
     echo -e "${GREEN}INFO: Pumps And Hoses Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_*.exe ]; then
-        wine "/opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_*.exe"
-		echo -e "${GREEN}INFO: Pumps And Hoses Pack is now installed!${NOCOLOR}"
+    	echo -e "${GREEN}INFO: Installing Pumps And Hoses Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Pumps And Hoses Pack is now installed!${NOCOLOR}"
     fi
 fi
 
