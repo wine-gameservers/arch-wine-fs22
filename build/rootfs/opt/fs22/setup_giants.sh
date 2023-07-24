@@ -93,6 +93,13 @@ else
 	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
 fi
 
+if [ -f /opt/fs22/dlc/FarmingSimulator22_horschAgrovation_*.exe ]; then
+    echo -e "${GREEN}INFO: Horsch AgroVation Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Horsch AgroVation Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
 # it's important to check if the config directory exists on the host mount path. If it doesn't exist, create it.
 
 if [ -d /opt/fs22/config/FarmingSimulator2022 ]
@@ -304,6 +311,17 @@ else
     	echo -e "${GREEN}INFO: Installing Pumps And Hoses Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Pumps And Hoses Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/pumpsAndHosesPack.dlc ]
+then
+    echo -e "${GREEN}INFO: Horsch AgroVation Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_horschAgrovation_*.exe ]; then
+    	echo -e "${GREEN}INFO: Installing Horsch AgroVation Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_horschAgrovation*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Horsch AgroVation Pack is now installed!${NOCOLOR}"
     fi
 fi
 
