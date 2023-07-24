@@ -314,7 +314,7 @@ else
     fi
 fi
 
-if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/pumpsAndHosesPack.dlc ]
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/horschAgrovationPack.dlc ]
 then
     echo -e "${GREEN}INFO: Horsch AgroVation Pack already installed!${NOCOLOR}"
 else
