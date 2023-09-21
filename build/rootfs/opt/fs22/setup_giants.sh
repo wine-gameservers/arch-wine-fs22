@@ -332,7 +332,7 @@ else
     fi
 fi
 
-if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/oxbopack.dlc ]
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/oxboPack.dlc ]
 then
     echo -e "${GREEN}INFO: OXBO Pack already installed!${NOCOLOR}"
 else
