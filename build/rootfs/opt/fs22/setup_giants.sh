@@ -30,6 +30,13 @@ else
 	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
 fi
 
+if [ -f /opt/fs22/dlc/FarmingSimulator22_agiPack_*.exe ]; then
+    echo -e "${GREEN}INFO: AGI Pack SETUP FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: AGI Pack Setup not found do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
+
 if [ -f /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_*.exe ]; then
     echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC SETUP FOUND!${NOCOLOR}"
 else
@@ -226,6 +233,17 @@ else
         echo -e "${GREEN}INFO: Installing Antonio Carraro Pack!${NOCOLOR}"
         for i in /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack*.exe; do wine "$i"; done
         echo -e "${GREEN}INFO: Antonio Carraro Pack is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/agiPack.dlc ]
+then
+    echo -e "${GREEN}INFO: AGI Pack already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_agiPack_*.exe ]; then
+    	echo -e "${GREEN}INFO: Installing AGI Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_agiPack_*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: AGI Pack is now installed!${NOCOLOR}"
     fi
 fi
 
