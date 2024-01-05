@@ -290,4 +290,4 @@ This Docker container is not endorsed by, directly affiliated with, maintained, 
 
 # Notes
 
-17-10-2023: Rebuild image to update wine and other packages
+05-01-2024: Force rebuild to fix nginx
