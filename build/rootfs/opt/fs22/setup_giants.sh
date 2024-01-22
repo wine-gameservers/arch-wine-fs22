@@ -80,7 +80,7 @@ else
 fi
 
 if [ -f /opt/fs22/dlc/FarmingSimulator22_kubotaPack_*.exe ]; then
-    echo -e "${GREEN}INFO: Kubotae Pack SETUP FOUND!${NOCOLOR}"
+    echo -e "${GREEN}INFO: Kubota Pack SETUP FOUND!${NOCOLOR}"
 else
 	echo -e "${YELLOW}WARNING: Kubota Setup not found, do you own it and does it exist in the dlc mount path?${NOCOLOR}"
 	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
@@ -148,7 +148,7 @@ if [ -d /opt/fs22/game/Farming\ Simulator\ 2022 ]
 then
     ln -s /opt/fs22/game/Farming\ Simulator\ 2022 ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022
 else
-echo -e "${RED}Error: There is a problem... the host game directory does not exist, can't create symlink installation will fail!${NOCOLOR}"
+echo -e "${RED}Error: There is a problem... the host game directory does not exist, can't create symlink and installation will fail!${NOCOLOR}"
 
 fi
 
@@ -172,7 +172,7 @@ fi
 
 if [ -f ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/FarmingSimulator2022.exe ]
 then
-    echo -e "${GREEN}INFO: Game already installed we can skip the installer!${NOCOLOR}"
+    echo -e "${GREEN}INFO: Game already installed, we can skip the installer!${NOCOLOR}"
 else
     wine "/opt/fs22/installer/FarmingSimulator2022.exe"
 fi
