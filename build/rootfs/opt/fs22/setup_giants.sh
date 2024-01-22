@@ -148,7 +148,7 @@ if [ -d /opt/fs22/game/Farming\ Simulator\ 2022 ]
 then
     ln -s /opt/fs22/game/Farming\ Simulator\ 2022 ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022
 else
-echo -e "${RED}Error: There is a problem... the host game directory does not exist, can't create symlink and installation will fail!${NOCOLOR}"
+echo -e "${RED}Error: There is a problem... the host game directory does not exist, can't create symlink and the installation has failed!${NOCOLOR}"
 
 fi
 
@@ -191,7 +191,7 @@ fi
 count=`ls -1 ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/*.dat 2>/dev/null | wc -l`
 if [ $count != 0 ]
 then
-    echo -e "${GREEN}INFO: Generate the game license files if needed!${NOCOLOR}"
+    echo -e "${GREEN}INFO: Generating the game license files as needed!${NOCOLOR}"
 else
     wine ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/FarmingSimulator2022.exe
 fi
@@ -210,7 +210,7 @@ if [ -d ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/ 
 then
     cp "/opt/fs22/xml/default_dedicatedServer.xml" ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/dedicatedServer.xml
 else
-    echo -e "${RED}ERROR: Game not installed?${NOCOLOR}" && exit
+    echo -e "${RED}ERROR: Game is not installed?${NOCOLOR}" && exit
 fi
 
 # Copy server config
@@ -219,7 +219,7 @@ if [ -d ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator20
 then
     cp "/opt/fs22/xml/default_dedicatedServerConfig.xml" ~/.fs22server/drive_c/users/$USER/Documents/My\ Games/FarmingSimulator2022/dedicated_server/dedicatedServerConfig.xml
 else
-    echo -e "${RED}ERROR: Game diden't start for first time no directories?${NOCOLOR}" && exit
+    echo -e "${RED}ERROR: Game didn't start for first time, no directories?${NOCOLOR}" && exit
 fi
 
 
@@ -379,7 +379,7 @@ else
     fi
 fi
 
-echo -e "${YELLOW}INFO: Checking for updates if you get warning about gpu drivers make sure to click no!${NOCOLOR}"
+echo -e "${YELLOW}INFO: Checking for updates, if you get warning about gpu drivers make sure to click no!${NOCOLOR}"
 wine ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/FarmingSimulator2022.exe
 
 # Check config if not exist exit
