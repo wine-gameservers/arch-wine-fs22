@@ -230,7 +230,7 @@ then
     echo -e "${GREEN}INFO: Antonio Carraro Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Antonio Carraro Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Antonio Carraro Pack!${NOCOLOR}"
         for i in /opt/fs22/dlc/FarmingSimulator22_antonioCarraroPack*.exe; do wine "$i"; done
         echo -e "${GREEN}INFO: Antonio Carraro Pack is now installed!${NOCOLOR}"
     fi
@@ -241,7 +241,7 @@ then
     echo -e "${GREEN}INFO: AGI Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_agiPack_*.exe ]; then
-    	echo -e "${GREEN}INFO: Installing AGI Pack!${NOCOLOR}"
+    	echo -e "${GREEN}INFO: Installing the AGI Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_agiPack_*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: AGI Pack is now installed!${NOCOLOR}"
     fi
@@ -252,7 +252,7 @@ then
     echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Claas Saddle TRAC Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Claas Saddle TRAC Pack!${NOCOLOR}"
         for i in /opt/fs22/dlc/FarmingSimulator22_claasSaddleTracPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: CLAAS XERION SADDLE TRAC Pack is now installed!${NOCOLOR}"
     fi
@@ -263,7 +263,7 @@ then
     echo -e "${GREEN}INFO: Ero Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_eroPack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Ero Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Ero Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_eroPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Ero Pack is now installed!${NOCOLOR}"
     fi
@@ -274,7 +274,7 @@ then
     echo -e "${GREEN}INFO: Volvo LM845 Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM845_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Volvo LM845 Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Volvo LM845 Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_extraContentVolvoLM84*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Volvo LM845 Pack is now installed!${NOCOLOR}"
     fi
@@ -285,7 +285,7 @@ then
     echo -e "${GREEN}INFO: Forestry Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_forestryPack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Forestry Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Forestry Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_forestryPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Forestry Pack is now installed!${NOCOLOR}"
     fi
@@ -296,7 +296,7 @@ then
     echo -e "${GREEN}INFO: Goeweil Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_goeweilPack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Goeweil Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Goeweil Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_goeweilPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Goeweil Pack is now installed!${NOCOLOR}"
     fi
@@ -307,7 +307,7 @@ then
     echo -e "${GREEN}INFO: Hay And Forage Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Hay And Forage Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Hay And Forage Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_hayAndForagePack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Hay And Forage Pack is now installed!${NOCOLOR}"
     fi
@@ -318,7 +318,7 @@ then
     echo -e "${GREEN}INFO: Kubota Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_kubotaPack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Kubota Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Kubota Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_kubotaPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Kubota Pack is now installed!${NOCOLOR}"
     fi
@@ -329,7 +329,7 @@ then
     echo -e "${GREEN}INFO: Vermeer Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_vermeerPack_*.exe ]; then
-        echo -e "${GREEN}INFO: Installing Vermeer Pack!${NOCOLOR}"
+        echo -e "${GREEN}INFO: Installing the Vermeer Pack!${NOCOLOR}"
     	for i in /opt/fs22/dlc/FarmingSimulator22_vermeerPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Vermeer Pack is now installed!${NOCOLOR}"
     fi
@@ -340,7 +340,7 @@ then
     echo -e "${GREEN}INFO: Pumps And Hoses Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack_*.exe ]; then
-    	echo -e "${GREEN}INFO: Installing Pumps And Hoses Pack!${NOCOLOR}"
+    	echo -e "${GREEN}INFO: Installing the Pumps And Hoses Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_pumpsAndHosesPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Pumps And Hoses Pack is now installed!${NOCOLOR}"
     fi
@@ -351,7 +351,7 @@ then
     echo -e "${GREEN}INFO: Horsch AgroVation Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_horschAgrovation_*.exe ]; then
-    	echo -e "${GREEN}INFO: Installing Horsch AgroVation Pack!${NOCOLOR}"
+    	echo -e "${GREEN}INFO: Installing the Horsch AgroVation Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_horschAgrovation*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Horsch AgroVation Pack is now installed!${NOCOLOR}"
     fi
@@ -362,7 +362,7 @@ then
     echo -e "${GREEN}INFO: OXBO Pack already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_oxboPack_*.exe ]; then
-    	echo -e "${GREEN}INFO: Installing OXBO Pack!${NOCOLOR}"
+    	echo -e "${GREEN}INFO: Installing the OXBO Pack!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_oxboPack*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: OXBO Pack is now installed!${NOCOLOR}"
     fi
@@ -373,7 +373,7 @@ then
     echo -e "${GREEN}INFO: Premium Expansion already installed!${NOCOLOR}"
 else
     if [ -f /opt/fs22/dlc/FarmingSimulator22_premiumExpansion_*.exe ]; then
-    	echo -e "${GREEN}INFO: Installing Premium Expansion!${NOCOLOR}"
+    	echo -e "${GREEN}INFO: Installing the Premium Expansion!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_premiumExpansion_*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Premium Expansion is now installed!${NOCOLOR}"
     fi
