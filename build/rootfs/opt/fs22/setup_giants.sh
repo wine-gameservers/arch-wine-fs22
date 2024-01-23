@@ -148,7 +148,7 @@ if [ -d /opt/fs22/game/Farming\ Simulator\ 2022 ]
 then
     ln -s /opt/fs22/game/Farming\ Simulator\ 2022 ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022
 else
-echo -e "${RED}Error: There is a problem... the host game directory does not exist, unable to create symlink the installation has failed!${NOCOLOR}"
+echo -e "${RED}Error: There is a problem... the host game directory does not exist, unable to create the symlink, the installation has failed!${NOCOLOR}"
 
 fi
 
