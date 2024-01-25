@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export WINEDLLOVERRIDES=mscoree=d
-export WINEDEBUG=-all,fixme-all
+export WINEDEBUG=-all
 export WINEPREFIX=~/.fs22server
 export WINEARCH=win64
 export USER=nobody
