@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export WINEDEBUG=-all,fixme-all
+export WINEDEBUG=-all
 export WINEPREFIX=~/.fs22server
 
 # Start the server
