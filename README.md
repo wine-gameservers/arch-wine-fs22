@@ -290,4 +290,4 @@ This Docker container is not endorsed by, directly affiliated with, maintained, 
 
 # Notes
 
-05-01-2024: Force rebuild to fix nginx
+13-05-2024: Force rebuild to add support for latest dlc!
