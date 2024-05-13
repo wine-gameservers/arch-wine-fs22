@@ -121,6 +121,12 @@ else
 	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
 fi
 
+if [ -f /opt/fs22/dlc/FarmingSimulator22_farmProductionPack_*.exe ]; then
+    echo -e "${GREEN}INFO: Farming Production Pack FOUND!${NOCOLOR}"
+else
+	echo -e "${YELLOW}WARNING: Farming Production Pack not found, do you own it and does it exist in the dlc mount path?${NOCOLOR}"
+	echo -e "${YELLOW}WARNING: If you do not own it ignore this!${NOCOLOR}"
+fi
 # it's important to check if the config directory exists on the host mount path. If it doesn't exist, create it.
 
 if [ -d /opt/fs22/config/FarmingSimulator2022 ]
@@ -376,6 +382,17 @@ else
     	echo -e "${GREEN}INFO: Installing the Premium Expansion!${NOCOLOR}"
 	for i in /opt/fs22/dlc/FarmingSimulator22_premiumExpansion_*.exe; do wine "$i"; done
 	echo -e "${GREEN}INFO: Premium Expansion is now installed!${NOCOLOR}"
+    fi
+fi
+
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/farmproductionpack.dlc ]
+then
+    echo -e "${GREEN}INFO: Premium Expansion already installed!${NOCOLOR}"
+else
+    if [ -f /opt/fs22/dlc/FarmingSimulator22_farmProductionPack_*.exe ]; then
+    	echo -e "${GREEN}INFO: Installing the Farm Production Pack!${NOCOLOR}"
+	for i in /opt/fs22/dlc/FarmingSimulator22_farmProductionPack_*.exe; do wine "$i"; done
+	echo -e "${GREEN}INFO: Farm Production Pack is now installed!${NOCOLOR}"
     fi
 fi
 
