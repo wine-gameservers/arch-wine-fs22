@@ -385,7 +385,7 @@ else
     fi
 fi
 
-if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/farmproductionpack.dlc ]
+if [ -f ~/.fs22server/drive_c/users/nobody/Documents/My\ Games/FarmingSimulator2022/pdlc/FarmProductionPack.dlc ]
 then
     echo -e "${GREEN}INFO: Premium Expansion already installed!${NOCOLOR}"
 else
